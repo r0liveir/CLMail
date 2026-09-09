@@ -1,0 +1,9 @@
+De: Fulano da Silva <fulanosilva@codelab.com>
+Para: Administração <admin@codelab.com>
+
+Oi, bom dia!
+
+Estou como responsável pela tarefa 2, e estamos trabalhando nela já.
+Pode adicionar o responsável e alterar o estado dela? 
+
+Obrigado!

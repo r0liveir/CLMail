@@ -372,18 +372,16 @@ wheels = [
 ]
 
 [[package]]
-name = "codmail"
+name = "clmail"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
-    { name = "openai" },
     { name = "pydantic-ai", extra = ["groq"] },
     { name = "sqlalchemy" },
 ]
 
 [package.metadata]
 requires-dist = [
-    { name = "openai", specifier = ">=3.11.0" },
     { name = "pydantic-ai", extras = ["groq"], specifier = ">=2.42.0" },
     { name = "sqlalchemy", specifier = ">=2.0.52" },
 ]

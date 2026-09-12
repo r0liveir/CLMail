@@ -71,7 +71,7 @@ def print_tables(session: Session) -> None:
 
 def main():
     if len(sys.argv) != 2:
-        raise SystemExit("Usage: codmail <path/to/email.txt>")
+        raise SystemExit("Usage: clmail <path/to/email.txt>")
 
     email = Path(sys.argv[1]).read_text(encoding="utf-8")
     print("[Email to be sent]:\n", email)

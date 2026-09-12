@@ -1,5 +1,5 @@
-from codmail.models import Task, TaskStatus
-from codmail.repository import TaskRepository
+from .models import Task, TaskStatus
+from .repository import TaskRepository
 
 class TaskService:
     def __init__(self, repo: TaskRepository) -> None:

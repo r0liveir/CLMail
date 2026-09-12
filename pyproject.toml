@@ -1,20 +1,16 @@
 [project]
-name = "codmail"
+name = "CLMail"
 version = "0.1.0"
-description = "Add your description here"
+description = "Simple AI Engineering example tool"
 readme = "README.md"
-authors = [
-    { name = "wate", email = "ryan.o2712@gmail.com" }
-]
 requires-python = ">=3.12"
 dependencies = [
-    "openai>=3.11.0",
     "pydantic-ai[groq]>=2.42.0",
     "sqlalchemy>=2.0.52",
 ]
 
 [project.scripts]
-codmail = "codmail.main:main"
+clmail = "clmail.main:main"
 
 [build-system]
 requires = ["uv_build>=0.12.5,<0.13.0"]

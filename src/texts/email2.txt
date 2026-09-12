@@ -1,7 +1,9 @@
 De: Ciclano Camargo <ciclano@codelab.com>
 Para: Administração <admin@codelab.com>
 
-A tarefa 4 já está terminada, por favor, atualize o status dela
+Oi, 
+precisamos adicionar uma nova tarefa no sistema. O nome do projeto é "Projeto teste",
+e pode me colocar como responsável (ID: 2).
 
 Atenciosamente,
 CC

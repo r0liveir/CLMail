@@ -18,8 +18,5 @@ $ uv run clmail src/texts/email1.txt
 
 Now, you can experiment with e-mails, add more services, and keep expanding this application into a full tool \o/
 
-If needed, this repository also has a `starter` skeleton where you can fill in the blanks. Run it with:
+This repository also has a `starter` skeleton where you can fill in the blanks. Read more on `starter/`
 
-```bash
-$ uv run starter <path/to/email>
-```

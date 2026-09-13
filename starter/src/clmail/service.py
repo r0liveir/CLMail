@@ -26,13 +26,5 @@ class TaskService:
         task_id: int | None,
         status: TaskStatus | None,
     ) -> bool:
-        if task_id is None or status is None:
-            return False
-
-        task = self.repo.get_by_id(task_id)
-        if task is None:
-            return False
-
-        task.status = status
-        self.repo.session.commit()
-        return True
+        """TODO: implement change status"""
+        pass

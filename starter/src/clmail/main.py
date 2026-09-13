@@ -1,6 +1,5 @@
 import sys
 from pathlib import Path
-from typing import Any
 
 from sqlalchemy.orm import Session
 
@@ -9,8 +8,9 @@ from .repository import TaskRepository
 from .service import TaskService
 
 ####
-# AULA: definir aqui TaskAction, system_prompt, model e agent.
+# AULA: definir aqui TaskAction, system_prompt e client OpenAI.
 ####
+
 
 def main():
     if len(sys.argv) != 2:
@@ -19,9 +19,8 @@ def main():
     email = Path(sys.argv[1]).read_text(encoding="utf-8")
 
     ####
-    # AULA: chamar o modelo e obter response.output.
+    # AULA: chamar client.responses.parse e obter action = response.output_parsed.
     ####
-
 
     initialize_db()
     with Session(engine) as session:
@@ -29,11 +28,11 @@ def main():
 
         print("\n[Banco antes da ação]")
         print_tables(session)
-            
+
         #####
         # AULA: rotear action.operation com match/case.
         #####
 
-        #print("\n[Ação aplicada]", result)
+        # print("\n[Ação aplicada]", result)
         print("\n[Banco depois da ação]")
         print_tables(session)

@@ -1,5 +1,4 @@
 from typing import Literal
-from .models import Base, TaskStatus, Coordinator, Task
 from .service import TaskService
 from .repository import TaskRepository
 from pydantic import BaseModel
@@ -7,9 +6,9 @@ from pydantic_ai import Agent, ModelSettings
 from pydantic_ai.models.groq import GroqModel
 import sys
 from pathlib import Path
-
-from sqlalchemy import create_engine, select
+from .database import engine, print_tables, initialize_db
 from sqlalchemy.orm import Session
+from .models import TaskStatus
 
 model = GroqModel("openai/gpt-oss-120b")
 
@@ -42,33 +41,6 @@ agent = Agent(
     instructions=system_prompt
 )
 
-def seed_db(session: Session) -> None:
-    alex = Coordinator(id=1, name="Fulado da Silva")
-    sam = Coordinator(id=2, name="Ciclano Camargo")
-
-    task = Task(
-        id=101,
-        title="Prepare Q3 kickoff roadmap",
-        status=TaskStatus.PLANNED,
-        coordinator=alex,
-    )
-
-    session.add_all([alex, sam, task])
-    session.commit()
-
-def print_tables(session: Session) -> None:
-    print("Coordinators:")
-    for coordinator in session.scalars(select(Coordinator)):
-        print(f"  id={coordinator.id}, name={coordinator.name!r}")
-
-    print("Tasks:")
-    for task in session.scalars(select(Task)):
-        print(
-            f"  id={task.id}, title={task.title!r}, "
-            f"coordinator_id={task.coordinator_id}, "
-            f"status={task.status.value!r}, hours={task.hours}"
-        )
-
 def main():
     if len(sys.argv) != 2:
         raise SystemExit("Usage: clmail <path/to/email.txt>")
@@ -82,12 +54,9 @@ def main():
 
     print("[Received response]:\n", action)
     
-    ## Initialize sqlite session
-    engine = create_engine("sqlite://")
-    Base.metadata.create_all(engine)
     with Session(engine) as session:
         # initial seed
-        seed_db(session)
+        initialize_db()
 
         # connect stuff
         repository = TaskRepository(session=session)
